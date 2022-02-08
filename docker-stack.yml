@@ -36,9 +36,9 @@ services:
       - back-tier
       - payment
     deploy:
-      replicas: 1
+      replicas: 2
       update_config:
-        parallelism: 1
+        parallelism: 2
         failure_action: rollback
       placement:
         constraints:
@@ -46,7 +46,7 @@ services:
       restart_policy:
         condition: on-failure
         delay: 5s
-        max_attempts: 6
+        max_attempts: 3
         window: 120s
     secrets:
       - postgres_password
